@@ -16,11 +16,11 @@ public class ReactOnMouse : MonoBehaviour {
 
     void OnMouseDown()
     {
-        gameObject.transform.Translate(0, -2f, 0);
+        gameObject.transform.Translate(0, -3f, 0);
     }
 
     void OnMouseUp()
     {
-        gameObject.transform.Translate(0, 2f, 0);
+        gameObject.transform.Translate(0, 3f, 0);
     }
 }
