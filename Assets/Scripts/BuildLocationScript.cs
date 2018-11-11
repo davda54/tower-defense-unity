@@ -5,7 +5,6 @@ using UnityEngine;
 public class BuildLocationScript : MonoBehaviour
 {
     public GameObject Turret;
-    public Sprite Grass;
 
     private bool pressed = false;
     private bool used = false;
@@ -34,7 +33,6 @@ public class BuildLocationScript : MonoBehaviour
         Instantiate(Turret, transform.position, Quaternion.identity);
         used = true;
 
-        GetComponent<SpriteRenderer>().sprite = Grass;
-        //GetComponent<SpriteRenderer>().enabled = false;
+        GetComponent<SpriteRenderer>().enabled = false;
     }
 }

@@ -9,8 +9,8 @@ public class EnemySpawner : MonoBehaviour
     {
         public int Amount;
         public GameObject Enemy;
-        public float SwawnTime;
-        public float RestTime;        
+        public float SpawnTime;
+        public float RestTime;
     }
 
     public List<Wave> Waves;
@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
             var spawnedEnemy = Pool.Instance.ActivateObject(currentWave.Enemy.tag);
             spawnedEnemy.SetActive(true);
 
-            spawnTime = currentWave.SwawnTime;
+            spawnTime = currentWave.SpawnTime;
             currentWave.Amount--;
             return;
         }

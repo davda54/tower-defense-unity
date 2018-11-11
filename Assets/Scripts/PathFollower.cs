@@ -5,7 +5,6 @@ using UnityEngine;
 // uses algorithm from https://gamedev.stackexchange.com/questions/27056/how-to-achieve-uniform-speed-of-movement-on-a-bezier-curve
 public class PathFollower : MonoBehaviour
 {
-
     public float Speed;
     public Vector2? PositionOffset;
 
@@ -42,11 +41,18 @@ public class PathFollower : MonoBehaviour
             RecomputeSegment();
         }
 
+        var L = Time.deltaTime * Speed;
         var tangent = t * t * v1 + t * v2 + v3;
-        t += Time.deltaTime*Speed / tangent.magnitude;
+
+        for (int i = 0; i < 100; i++)
+        {
+            t = t + (L / 100) / tangent.magnitude;
+            tangent = t * t * v1 + t * v2 + v3;
+        }
 
         transform.position = Bezier.EvaluateCubic(A, B, C, D, t);
-        transform.eulerAngles = new Vector3(0, 0, MathHelpers.Angle(tangent, Vector2.right));
+
+        transform.eulerAngles = new Vector3(0.0f, 0.0f, MathHelpers.Angle(tangent, Vector2.right));
     }
 
     private void RecomputeSegment()

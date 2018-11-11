@@ -53,3 +53,6 @@ TagManager:
   - name: Foreground
     uniqueID: 2938625035
     locked: 0
+  - name: Clouds
+    uniqueID: 389745481
+    locked: 0
