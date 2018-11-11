@@ -6,8 +6,8 @@ using UnityEngine;
 public class PathFollower : MonoBehaviour
 {
 
-    public GameObject Path;
     public float Speed;
+    public Vector2? PositionOffset;
 
     private Path path;
     private int segmentIndex;
@@ -16,13 +16,18 @@ public class PathFollower : MonoBehaviour
     private Vector2 v1, v2, v3;
     private float t;
 
-	void Start ()
+	void OnEnable ()
     {
-        path = Path.GetComponent<PathCreator>().path;
+        path = FindObjectOfType<PathCreator>().path;
         segmentIndex = 0;
 
+        if (PositionOffset == null)
+        {
+            PositionOffset = Random.insideUnitCircle * Random.Range(-16.0f, 16.0f);
+        }
+
         RecomputeSegment();
-        transform.position = A;
+        transform.position = A;        
 	}
 	
 	void FixedUpdate ()
@@ -48,10 +53,10 @@ public class PathFollower : MonoBehaviour
     {
         var segment = path.GetPointsInSegment(segmentIndex);
 
-        A = segment[0];
-        B = segment[1];
-        C = segment[2];
-        D = segment[3];
+        A = segment[0] + (Vector2)PositionOffset;
+        B = segment[1] + (Vector2)PositionOffset;
+        C = segment[2] + (Vector2)PositionOffset;
+        D = segment[3] + (Vector2)PositionOffset;
 
         v1 = -3 * A + 9 * B - 9 * C + 3 * D;
         v2 = 6 * A - 12 * B + 6 * C;
