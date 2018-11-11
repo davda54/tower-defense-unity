@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts;
+using UnityEngine;
 
 
 // uses algorithm from https://gamedev.stackexchange.com/questions/27056/how-to-achieve-uniform-speed-of-movement-on-a-bezier-curve
@@ -36,9 +37,11 @@ public class PathFollower : MonoBehaviour
             RecomputeSegment();
         }
 
-        t += Time.deltaTime*Speed / (t*t*v1 + t*v2 + v3).magnitude;
+        var tangent = t * t * v1 + t * v2 + v3;
+        t += Time.deltaTime*Speed / tangent.magnitude;
 
         transform.position = Bezier.EvaluateCubic(A, B, C, D, t);
+        transform.eulerAngles = new Vector3(0, 0, MathHelpers.Angle(tangent, Vector2.right));
     }
 
     private void RecomputeSegment()
