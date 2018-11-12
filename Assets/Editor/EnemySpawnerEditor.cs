@@ -31,7 +31,16 @@ class EnemySpawnerEditorr : Editor
             };
 
         list.drawHeaderCallback = (Rect rect) => {
-            EditorGUI.LabelField(rect, "Enemy Waves");
+            EditorGUI.LabelField(new Rect(rect.x + 13, rect.y, 30, rect.height + 10), "#");
+            EditorGUI.LabelField(new Rect(rect.x + 13 + 35, rect.y, rect.width - 35 - 70 - 65, rect.height + 10), "enemy");
+            EditorGUI.LabelField(new Rect(rect.x + rect.width - 70 - 65, rect.y, 60, rect.height + 10), "period");
+            EditorGUI.LabelField(new Rect(rect.x + rect.width - 65, rect.y, 60, rect.height + 10), "rest");
+        };
+
+        list.onSelectCallback = (ReorderableList l) => {
+            var prefab = l.serializedProperty.GetArrayElementAtIndex(l.index).FindPropertyRelative("Enemy").objectReferenceValue as GameObject;
+            if (prefab)
+                EditorGUIUtility.PingObject(prefab.gameObject);
         };
     }
 

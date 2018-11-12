@@ -5,9 +5,13 @@ using UnityEngine;
 // uses algorithm from https://gamedev.stackexchange.com/questions/27056/how-to-achieve-uniform-speed-of-movement-on-a-bezier-curve
 public class PathFollower : MonoBehaviour
 {
-    public float Speed;
-    public Vector2? PositionOffset;
+    public enum PathType { Ground, Air }
 
+    public PathType Type;
+    public float Speed;
+    public float OffsetAmount;
+
+    private Vector2 PositionOffset;
     private Path path;
     private int segmentIndex;
 
@@ -17,12 +21,17 @@ public class PathFollower : MonoBehaviour
 
 	void OnEnable ()
     {
-        path = FindObjectOfType<PathCreator>().path;
+        switch(Type)
+        {
+            case PathType.Ground: path = GameObject.Find("GroundPath").GetComponent<PathCreator>().path; break;
+            case PathType.Air: path = GameObject.Find("AirPath").GetComponent<PathCreator>().path; break;
+        }
+
         segmentIndex = 0;
 
         if (PositionOffset == null)
         {
-            PositionOffset = Random.insideUnitCircle * Random.Range(-16.0f, 16.0f);
+            PositionOffset = Random.insideUnitCircle * Random.Range(-OffsetAmount, OffsetAmount);
         }
 
         RecomputeSegment();
