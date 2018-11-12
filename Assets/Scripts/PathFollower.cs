@@ -46,28 +46,24 @@ public class PathFollower : MonoBehaviour
             RecomputeSegment();
         }
 
-        var L = Time.deltaTime * Speed;
         var tangent = t * t * v1 + t * v2 + v3;
-
-        for (int i = 0; i < 100; i++)
-        {
-            t = t + (L / 100) / tangent.magnitude;
-            tangent = t * t * v1 + t * v2 + v3;
-        }
+        t = t + Time.deltaTime * Speed / tangent.magnitude;
 
         transform.position = Bezier.EvaluateCubic(A, B, C, D, t);
-
         transform.eulerAngles = new Vector3(0.0f, 0.0f, MathHelpers.Angle(tangent, Vector2.right));
+
+        if (gameObject.layer == LayerMask.NameToLayer("enemy"))
+            EnemyManagerScript.Instance.UpdateEnemy(gameObject, segmentIndex + t);
     }
 
     private void RecomputeSegment()
     {
         var segment = path.GetPointsInSegment(segmentIndex);
 
-        A = segment[0] + (Vector2)PositionOffset;
-        B = segment[1] + (Vector2)PositionOffset;
-        C = segment[2] + (Vector2)PositionOffset;
-        D = segment[3] + (Vector2)PositionOffset;
+        A = segment[0] + PositionOffset;
+        B = segment[1] + PositionOffset;
+        C = segment[2] + PositionOffset;
+        D = segment[3] + PositionOffset;
 
         v1 = -3 * A + 9 * B - 9 * C + 3 * D;
         v2 = 6 * A - 12 * B + 6 * C;

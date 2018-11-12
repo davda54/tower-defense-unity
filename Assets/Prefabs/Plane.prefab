@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114458671898315584}
   - component: {fileID: 114035731864137962}
   - component: {fileID: 114445477701953798}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: plane
   m_Icon: {fileID: 0}
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0733ee200212bd743bf9e3541dcf4a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 200
 --- !u!114 &114445477701953798
 MonoBehaviour:
   m_ObjectHideFlags: 1

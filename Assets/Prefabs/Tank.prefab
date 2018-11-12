@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114661671904458110}
   - component: {fileID: 114254906361930568}
   - component: {fileID: 50719512898717024}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tank
   m_TagString: tank
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0733ee200212bd743bf9e3541dcf4a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHealth: 500
 --- !u!114 &114661671904458110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +142,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd77565f06213f3419b318f0fd9ed2ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 0
   Speed: 50
+  OffsetAmount: 0
 --- !u!212 &212548171931526396
 SpriteRenderer:
   m_ObjectHideFlags: 1

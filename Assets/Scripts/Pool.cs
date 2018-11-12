@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pool : MonoBehaviour {
-
+public class Pool : MonoBehaviour
+{
     private static Pool poolInstance;
     public static Pool Instance
     {
@@ -18,12 +18,11 @@ public class Pool : MonoBehaviour {
 
     private class SinglePool
     {
-        public LinkedList<GameObject> Active;
+        public HashSet<GameObject> Active;
         public Queue<GameObject> Available;
 
         public SinglePool()
         {
-            Active = new LinkedList<GameObject>();
             Available = new Queue<GameObject>();
         }
     }
@@ -31,18 +30,18 @@ public class Pool : MonoBehaviour {
     public int StartCapacity = 10;
 
     private Dictionary<string, GameObject> pooledObjects = new Dictionary<string, GameObject>();
-    private Dictionary<string, SinglePool> pool = new Dictionary<string, SinglePool>();    
+    private Dictionary<string, Queue<GameObject>> pool = new Dictionary<string, Queue<GameObject>>();    
 
     public void RegisterObject(GameObject prototype)
     {
         if (pooledObjects.ContainsKey(prototype.tag)) return;
         
-        var singlePool = new SinglePool();
+        var singlePool = new Queue<GameObject>();
         for (var i = 0; i < StartCapacity; i++)
         {
             var newItem = Instantiate(prototype, transform);
             newItem.SetActive(false);
-            singlePool.Available.Enqueue(newItem);
+            singlePool.Enqueue(newItem);
         }
 
         pooledObjects.Add(prototype.tag, prototype);
@@ -56,15 +55,13 @@ public class Pool : MonoBehaviour {
 
         var singlePool = pool[tag];
 
-        if (singlePool.Available.Count == 0)
+        if (singlePool.Count == 0)
         {
             var newItem = Instantiate(pooledObjects[tag], transform);
-            singlePool.Active.AddLast(newItem);
             return newItem;
         }
 
-        var item = singlePool.Available.Dequeue();
-        singlePool.Active.AddLast(item);
+        var item = singlePool.Dequeue();
 
         return item;
     }
@@ -77,7 +74,6 @@ public class Pool : MonoBehaviour {
         var singlePool = pool[item.tag];
 
         item.SetActive(false);
-        singlePool.Active.Remove(item);
-        singlePool.Available.Enqueue(item);
+        singlePool.Enqueue(item);
     }
 }

@@ -8,6 +8,7 @@ TagManager:
   - finish
   - tank
   - plane
+  - bullet
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - enemy
+  - turret
   - 
   - 
   - 

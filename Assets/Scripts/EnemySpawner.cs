@@ -51,8 +51,7 @@ public class EnemySpawner : MonoBehaviour
 
         if(spawnTime < 0)
         {
-            var spawnedEnemy = Pool.Instance.ActivateObject(currentWave.Enemy.tag);
-            spawnedEnemy.SetActive(true);
+            Spawn(currentWave.Enemy);
 
             spawnTime = currentWave.SpawnTime;
             currentWave.Amount--;
@@ -61,4 +60,13 @@ public class EnemySpawner : MonoBehaviour
 
         spawnTime -= Time.deltaTime;        
 	}
+
+    private void Spawn(GameObject prototype)
+    {
+        var spawnedEnemy = Pool.Instance.ActivateObject(prototype.tag);
+        spawnedEnemy.SetActive(true);
+
+        EnemyManagerScript.Instance.RegisterEnemy(spawnedEnemy);
+    }
 }
+
