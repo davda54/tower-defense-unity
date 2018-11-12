@@ -28,11 +28,7 @@ public class PathFollower : MonoBehaviour
         }
 
         segmentIndex = 0;
-
-        if (PositionOffset == null)
-        {
-            PositionOffset = Random.insideUnitCircle * Random.Range(-OffsetAmount, OffsetAmount);
-        }
+        PositionOffset = Random.insideUnitCircle * Random.Range(-OffsetAmount, OffsetAmount);
 
         RecomputeSegment();
         transform.position = A;        

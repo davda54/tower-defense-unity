@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 0
   Speed: 100
-  OffsetAmount: 24
+  OffsetAmount: 12
 --- !u!212 &212254094947778232
 SpriteRenderer:
   m_ObjectHideFlags: 1

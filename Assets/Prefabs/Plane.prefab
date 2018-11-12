@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114445477701953798}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: soldier
+  m_TagString: plane
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Speed: 200
-  OffsetAmount: 200
+  OffsetAmount: 50
 --- !u!212 &212099964229417518
 SpriteRenderer:
   m_ObjectHideFlags: 1
