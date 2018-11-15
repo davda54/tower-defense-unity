@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BuildLocationScript : MonoBehaviour
 {
-    public GameObject Turret;
+    public GameObject TurretPrefab;
 
+    private GameObject turret;
     private bool pressed = false;
     private bool used = false;
 
@@ -30,9 +31,15 @@ public class BuildLocationScript : MonoBehaviour
         if (!pressed || used) return;
 
         gameObject.transform.Translate(0, 3f, 0);
-        Instantiate(Turret, transform.position, Quaternion.identity);
-        used = true;
 
-        GetComponent<SpriteRenderer>().enabled = false;
+        int cost = TurretPrefab.GetComponent<TurretScript>().Cost;
+        if (GameManager.Instance.GetMoney() >= cost)
+        {
+            turret = Instantiate(TurretPrefab, transform.position, Quaternion.identity);
+            GameManager.Instance.TurretBuilt(turret);
+            used = true;
+
+            GetComponent<SpriteRenderer>().enabled = false;
+        }
     }
 }

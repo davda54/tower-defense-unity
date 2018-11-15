@@ -54,4 +54,13 @@ public class EnemyManagerScript : MonoBehaviour
             .Select(e => e.Enemy)
             .FirstOrDefault();
     }
+
+    public GameObject GetClosestEnemyInRange(Vector2 position, float range)
+    {
+        return enemies.Values
+            .Where(e => ((Vector2)e.Enemy.transform.position - position).sqrMagnitude < range * range)
+            .OrderBy(e => ((Vector2)e.Enemy.transform.position - position).sqrMagnitude)
+            .Select(e => e.Enemy)
+            .FirstOrDefault();
+    }
 }

@@ -37,6 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4301065782359044}
   - component: {fileID: 212876083604996254}
+  - component: {fileID: 114087622990094266}
   m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
@@ -71,6 +72,18 @@ Transform:
   m_Father: {fileID: 4301065782359044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114087622990094266
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1809479065639562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8feaeb446d98046b48de2efc06fb6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cost: 100
 --- !u!114 &114928717475329050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -85,9 +98,10 @@ MonoBehaviour:
   BulletPrototype: {fileID: 1346470547129190, guid: 8013b043c406dfc4699c603145a77111,
     type: 2}
   ShootingPeriod: 0.1
-  Range: 256
+  Range: 160
   BulletSpeed: 500
-  Damage: 5
+  Damage: 2
+  RotationSpeed: 20
 --- !u!212 &212113255135305984
 SpriteRenderer:
   m_ObjectHideFlags: 1

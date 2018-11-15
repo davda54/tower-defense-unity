@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 200
+  Money: 200
 --- !u!114 &114445477701953798
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -157,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: 1
   Speed: 200
-  OffsetAmount: 50
+  OffsetAmount: 16
 --- !u!212 &212099964229417518
 SpriteRenderer:
   m_ObjectHideFlags: 1

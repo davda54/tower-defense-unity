@@ -78,7 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2bb331906411cc42947e196d9c8d473, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Turret: {fileID: 1809479065639562, guid: 2dfc45dfc5921b044beecfc58a7849d0, type: 2}
+  TurretPrefab: {fileID: 1809479065639562, guid: 2dfc45dfc5921b044beecfc58a7849d0,
+    type: 2}
 --- !u!212 &212071820777451578
 SpriteRenderer:
   m_ObjectHideFlags: 1

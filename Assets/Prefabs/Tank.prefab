@@ -131,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 500
+  Money: 500
 --- !u!114 &114661671904458110
 MonoBehaviour:
   m_ObjectHideFlags: 1

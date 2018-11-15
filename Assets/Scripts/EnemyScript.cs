@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     public float MaxHealth;
+    public int Money;
 
     private float health;
 
@@ -17,7 +18,9 @@ public class EnemyScript : MonoBehaviour
     {
         if(collision.tag == "finish")
         {
+            GameManager.Instance.EnemyEscaped(gameObject);
         }
+
         else if(collision.tag == "bullet")
         {
             var damage = collision.gameObject.GetComponent<BulletScript>().Damage;
@@ -26,6 +29,7 @@ public class EnemyScript : MonoBehaviour
             
             if(health <= 0)
             {
+                GameManager.Instance.EnemyKilled(gameObject);
                 Pool.Instance.DeactivateObject(gameObject);
                 EnemyManagerScript.Instance.DeleteEnemy(gameObject);
             }
