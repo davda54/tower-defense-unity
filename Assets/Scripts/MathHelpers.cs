@@ -31,5 +31,22 @@ namespace Assets.Scripts
             else
                 return sprite.texture;
         }
+
+        // https://stackoverflow.com/questions/5817490/implementing-box-mueller-random-number-generator-in-c-sharp
+        public static float NextGaussianDouble()
+        {
+            float u, v, S;
+
+            do
+            {
+                u = 2.0f * UnityEngine.Random.value - 1.0f;
+                v = 2.0f * UnityEngine.Random.value - 1.0f;
+                S = u * u + v * v;
+            }
+            while (S >= 1.0);
+
+            float fac = Mathf.Sqrt(-2.0f * Mathf.Log(S) / S);
+            return u * fac;
+        }
     }
 }

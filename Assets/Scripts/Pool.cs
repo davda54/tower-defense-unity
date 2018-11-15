@@ -28,9 +28,18 @@ public class Pool : MonoBehaviour
     }
     
     public int StartCapacity = 10;
+    public GameObject[] PooledObjects;
 
     private Dictionary<string, GameObject> pooledObjects = new Dictionary<string, GameObject>();
-    private Dictionary<string, Queue<GameObject>> pool = new Dictionary<string, Queue<GameObject>>();    
+    private Dictionary<string, Queue<GameObject>> pool = new Dictionary<string, Queue<GameObject>>();
+
+    private void Start()
+    {
+        foreach (var item in PooledObjects)
+        {
+            RegisterObject(item);
+        }
+    }
 
     public void RegisterObject(GameObject prototype)
     {

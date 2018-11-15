@@ -65,4 +65,10 @@ public class GameManager : MonoBehaviour
         money -= turret.GetComponent<TurretScript>().Cost;
         moneyDrawer.Draw(money);
     }
+
+    public void CoinCollected(GameObject coin)
+    {
+        money += coin.GetComponent<CoinScript>().Value;
+        moneyDrawer.Draw(money);
+    }
 }

@@ -133,6 +133,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 200
   Money: 200
+  Coin: {fileID: 1217316932939368, guid: 570d8db676ef6304ebdb3a76c5e8d74c, type: 2}
+  SpawnedCoinMean: 20
+  SpawnedCoinStd: 5
 --- !u!114 &114445477701953798
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,8 +14,6 @@ public class CannonScript : MonoBehaviour
 
 	void Start ()
     {
-        Pool.Instance.RegisterObject(BulletPrototype);
-
         var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, float.PositiveInfinity);
         var angle = MathHelpers.Angle(enemy.transform.position - transform.position, transform.up);
         transform.eulerAngles = new Vector3(0, 0, angle);

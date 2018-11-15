@@ -22,11 +22,6 @@ public class EnemySpawner : MonoBehaviour
 	void OnEnable ()
     {
         currentWave = Waves[0];
-
-        foreach (var wave in Waves)
-        {
-            Pool.Instance.RegisterObject(wave.Enemy);
-        }
 	}
 	
 	// Update is called once per frame

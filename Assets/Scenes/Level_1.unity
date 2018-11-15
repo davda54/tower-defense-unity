@@ -13222,6 +13222,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartCapacity: 10
+  PooledObjects:
+  - {fileID: 1346470547129190, guid: 8013b043c406dfc4699c603145a77111, type: 2}
+  - {fileID: 1217316932939368, guid: 570d8db676ef6304ebdb3a76c5e8d74c, type: 2}
+  - {fileID: 1478546801253832, guid: c10f8ee6335fe554e85979fe4b225ae5, type: 2}
+  - {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
+  - {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
 --- !u!4 &2070119834
 Transform:
   m_ObjectHideFlags: 0

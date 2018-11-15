@@ -9,6 +9,7 @@ TagManager:
   - tank
   - plane
   - bullet
+  - coin
   layers:
   - Default
   - TransparentFX
