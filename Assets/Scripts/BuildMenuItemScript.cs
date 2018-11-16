@@ -11,7 +11,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
 
     private Text text;
     private TurretScript turret;
-    private BuildLocationScript parent;
+    private GameObject parent;
     private Image image;
     private bool pressed = false;
     private bool disabled = false;
@@ -48,26 +48,30 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (disabled || !pressed) return;
+        if (disabled) return;
+
+        image.sprite = BaseSprite;
+
+        if (!pressed) return;
 
         gameObject.transform.Translate(0, 3f, 0);
-        image.sprite = BaseSprite;
         pressed = false;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
         if (disabled || !pressed) return;
+       
+        var instance = Instantiate(Prototype, parent.transform.position, Quaternion.identity);
+        GameManager.Instance.TurretBuilt(instance);
 
-        gameObject.transform.Translate(0, 3f, 0);
-        image.sprite = BaseSprite;
-        pressed = false;
+        parent.SetActive(false);
     }
 
     // Use this for initialization
     void Start ()
     {
-        parent = GetComponentInParent<BuildLocationScript>();
+        parent = GetComponentInParent<BuildLocationScript>().gameObject;
         image = GetComponent<Image>();
         turret = Prototype.GetComponent<TurretScript>();
         text = transform.Find("Name").gameObject.GetComponent<Text>();

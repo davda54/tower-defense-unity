@@ -5,15 +5,23 @@ using UnityEngine.EventSystems;
 
 public class BuildLocationScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
-    public GameObject TurretPrefab;
-
+    [HideInInspector]
+    public static GameObject OpenCanvas;
+    private GameObject canvas;
     private GameObject turret;
     private bool pressed = false;
-    private bool used = false;
+
+    void Start()
+    {
+        canvas = transform.Find("Canvas").gameObject;
+        canvas.SetActive(false);
+    }
 
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        if(pressed || used) return;
+        if(pressed) return;
+
+        if (OpenCanvas != null) OpenCanvas.SetActive(false);
 
         gameObject.transform.Translate(0, -3f, 0);
         pressed = true;
@@ -21,7 +29,7 @@ public class BuildLocationScript : MonoBehaviour, IPointerDownHandler, IPointerU
     
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
-        if (!pressed || used) return;
+        if (!pressed) return;
 
         gameObject.transform.Translate(0, 3f, 0);
         pressed = false;
@@ -29,18 +37,10 @@ public class BuildLocationScript : MonoBehaviour, IPointerDownHandler, IPointerU
 
     void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
-        if (!pressed || used) return;
+        if (!pressed) return;
 
         gameObject.transform.Translate(0, 3f, 0);
-
-        int cost = TurretPrefab.GetComponent<TurretScript>().Cost;
-        if (GameManager.Instance.GetMoney() >= cost)
-        {
-            turret = Instantiate(TurretPrefab, transform.position, Quaternion.identity);
-            GameManager.Instance.TurretBuilt(turret);
-            used = true;
-
-            GetComponent<SpriteRenderer>().enabled = false;
-        }
+        canvas.SetActive(true);
+        OpenCanvas = canvas;
     }
 }
