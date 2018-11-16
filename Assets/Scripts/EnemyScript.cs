@@ -24,8 +24,8 @@ public class EnemyScript : MonoBehaviour
 
         for(int i = 0; i < num; i++)
         {
-            var x = MathHelpers.NextGaussianDouble() * 16.0f;
-            var y = MathHelpers.NextGaussianDouble() * 16.0f;
+            var x = MathHelpers.NextGaussianDouble() * Mathf.Log(i + 1) * 4.0f;
+            var y = MathHelpers.NextGaussianDouble() * Mathf.Log(i + 1) * 4.0f;
 
             var coin = Pool.Instance.ActivateObject(Coin.tag);
             coin.transform.position = transform.position + new Vector3(x, y, 0);

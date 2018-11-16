@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class BuildLocationScript : MonoBehaviour
+public class BuildLocationScript : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler
 {
     public GameObject TurretPrefab;
 
@@ -10,15 +11,15 @@ public class BuildLocationScript : MonoBehaviour
     private bool pressed = false;
     private bool used = false;
 
-    void OnMouseDown()
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         if(pressed || used) return;
 
         gameObject.transform.Translate(0, -3f, 0);
         pressed = true;
     }
-
-    private void OnMouseExit()
+    
+    void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         if (!pressed || used) return;
 
@@ -26,7 +27,7 @@ public class BuildLocationScript : MonoBehaviour
         pressed = false;
     }
 
-    void OnMouseUp()
+    void IPointerUpHandler.OnPointerUp(PointerEventData eventData)
     {
         if (!pressed || used) return;
 
