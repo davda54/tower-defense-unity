@@ -40,11 +40,12 @@ public class EnemyScript : MonoBehaviour
             GameManager.Instance.EnemyEscaped(gameObject);
         }
 
-        else if(collision.tag == "bullet")
+        else if(collision.tag == "bullet" || collision.tag == "rocket")
         {
-            var damage = collision.gameObject.GetComponent<BulletScript>().Damage;
+            var flyingShot = collision.gameObject.GetComponent<FlyingShotScript>();
+            var damage = flyingShot.Damage;
             health -= damage;
-            Pool.Instance.DeactivateObject(collision.gameObject);
+            flyingShot.BlowUp();
             
             if(health <= 0)
             {

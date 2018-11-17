@@ -10,6 +10,7 @@ TagManager:
   - plane
   - bullet
   - coin
+  - rocket
   layers:
   - Default
   - TransparentFX

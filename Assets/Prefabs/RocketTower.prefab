@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8feaeb446d98046b48de2efc06fb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 100
+  Cost: 500
 --- !u!114 &114778330271716362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -95,13 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779845696112605439ac96b33e8cf135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrototype: {fileID: 1346470547129190, guid: 8013b043c406dfc4699c603145a77111,
+  BulletPrototype: {fileID: 1806384793953532, guid: 7de8fce8894362844a7152328b031743,
     type: 2}
-  ShootingPeriod: 0.1
-  Range: 160
-  BulletSpeed: 500
-  Damage: 2
-  RotationSpeed: 20
+  ShootingPeriod: 2
+  Range: 512
+  BulletSpeed: 0
+  Damage: 50
+  RotationSpeed: 5
 --- !u!212 &212089695613024384
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayerID: -1356342261
   m_SortingLayer: 3
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300412, guid: 72613178417f3694ebdae1d54d4a7ada, type: 3}
+  m_Sprite: {fileID: 21300458, guid: 72613178417f3694ebdae1d54d4a7ada, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

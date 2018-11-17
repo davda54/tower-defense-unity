@@ -33,11 +33,12 @@ public class CannonScript : MonoBehaviour
                 bullet.transform.position = transform.position;
                 bullet.transform.rotation = transform.rotation;
 
-                var bulletScript = bullet.GetComponent<BulletScript>();
+                var bulletScript = bullet.GetComponent<FlyingShotScript>();
                 bulletScript.Speed = BulletSpeed;
                 bulletScript.Range = Range;
                 bulletScript.Direction = transform.transform.up;
                 bulletScript.Damage = Damage;
+                bulletScript.Target = enemy;
 
                 bullet.SetActive(true);
 

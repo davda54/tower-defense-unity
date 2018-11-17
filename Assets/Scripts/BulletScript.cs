@@ -1,17 +1,8 @@
 ﻿using UnityEngine;
 using Assets.Scripts;
 
-public class BulletScript : MonoBehaviour
-{
-    [System.NonSerialized]
-    public float Speed;
-    [System.NonSerialized]
-    public Vector2 Direction;
-    [System.NonSerialized]
-    public float Range;
-    [System.NonSerialized]
-    public float Damage;
-
+public class BulletScript : FlyingShotScript
+{   
     private float distance;
     
 	// Use this for initialization
