@@ -4,5 +4,4 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour
 {
-    public int Cost;
 }

@@ -19,6 +19,14 @@ public class GameManager : MonoBehaviour
     public int MaxLives;
     public int InitialMoney;
 
+    public int InitialTurretPrice;
+    public int InitialRocketPrice;
+    public int TurretPriceAddition;
+    public int RocketPriceAddition;
+
+    private int turretPrice;
+    private int rocketPrice;
+
     private int lives;
     private int money;
     private HealthDrawerScript healthDrawer;
@@ -30,17 +38,14 @@ public class GameManager : MonoBehaviour
         lives = MaxLives;
         money = InitialMoney;
 
+        turretPrice = InitialTurretPrice;
+        rocketPrice = InitialRocketPrice;
+
         healthDrawer = GetComponent<HealthDrawerScript>();
         moneyDrawer = GetComponent<MoneyDrawer>();
 
         moneyDrawer.Draw(InitialMoney);
     }
-
-    // Update is called once per frame
-    void Update ()
-    {
-		
-	}
 
     public void EnemyEscaped(GameObject enemy)
     {
@@ -51,8 +56,6 @@ public class GameManager : MonoBehaviour
 
     public void EnemyKilled(GameObject enemy)
     {
-        money += enemy.GetComponent<EnemyScript>().Money;
-        moneyDrawer.Draw(money);
     }
 
     public int GetMoney()
@@ -60,15 +63,44 @@ public class GameManager : MonoBehaviour
         return money;
     }
 
+    public void AddMoney(int value)
+    {
+        money += value;
+        moneyDrawer.Draw(money);
+    }
+
     public void TurretBuilt(GameObject turret)
     {
-        money -= turret.GetComponent<TurretScript>().Cost;
+        if (turret.CompareTag("turretTower"))
+        {
+            money -= turretPrice;
+            turretPrice += TurretPriceAddition;
+        }
+        else
+        {
+            money -= rocketPrice;
+            rocketPrice += RocketPriceAddition;
+        }
+
         moneyDrawer.Draw(money);
     }
 
     public void CoinCollected(GameObject coin)
     {
-        money += coin.GetComponent<CoinScript>().Value;
+        money += CoinScript.Value;
         moneyDrawer.Draw(money);
+    }
+
+    public bool EnoughMoneyForTurret(string tag)
+    {
+        if(tag == "turretTower")
+            return money >= turretPrice;
+
+        return money >= rocketPrice;
+    }
+
+    public int MoneyForTurret(string tag)
+    {
+        return tag == "turretTower" ? turretPrice : rocketPrice;
     }
 }

@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114087622990094266}
   m_Layer: 9
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: turretTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8feaeb446d98046b48de2efc06fb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 100
 --- !u!114 &114928717475329050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -98,10 +97,13 @@ MonoBehaviour:
   BulletPrototype: {fileID: 1346470547129190, guid: 8013b043c406dfc4699c603145a77111,
     type: 2}
   ShootingPeriod: 0.1
-  Range: 160
+  Range: 192
   BulletSpeed: 500
   Damage: 2
   RotationSpeed: 20
+  Enemies:
+  - {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
+  - {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
 --- !u!212 &212113255135305984
 SpriteRenderer:
   m_ObjectHideFlags: 1

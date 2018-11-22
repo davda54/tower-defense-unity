@@ -53,7 +53,7 @@ public class PathFollower : MonoBehaviour
         transform.eulerAngles = new Vector3(0.0f, 0.0f, MathHelpers.Angle(tangent, Vector2.right));
 
         if (gameObject.layer == LayerMask.NameToLayer("enemy"))
-            EnemyManagerScript.Instance.UpdateEnemy(gameObject, segmentIndex + t);
+            EnemyManagerScript.Instance.UpdateEnemy(gameObject, path.NumSegments - segmentIndex - t);
     }
 
     private void RecomputeSegment()

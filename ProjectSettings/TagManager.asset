@@ -11,6 +11,8 @@ TagManager:
   - bullet
   - coin
   - rocket
+  - turretTower
+  - rocketTower
   layers:
   - Default
   - TransparentFX

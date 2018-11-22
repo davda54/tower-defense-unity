@@ -11098,7 +11098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLives: 5
-  InitialMoney: 100
+  InitialMoney: 1000
 --- !u!4 &1087949917
 Transform:
   m_ObjectHideFlags: 0

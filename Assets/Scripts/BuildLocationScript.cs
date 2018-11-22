@@ -39,6 +39,7 @@ public class BuildLocationScript : MonoBehaviour, IPointerDownHandler, IPointerU
     {
         if (!pressed) return;
 
+        pressed = false;
         gameObject.transform.Translate(0, 3f, 0);
         canvas.SetActive(true);
         OpenCanvas = canvas;

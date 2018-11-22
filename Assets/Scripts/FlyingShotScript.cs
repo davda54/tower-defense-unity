@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class FlyingShotScript : MonoBehaviour
@@ -14,7 +15,9 @@ public abstract class FlyingShotScript : MonoBehaviour
     public float Range;
     [System.NonSerialized]
     public float Damage;
-
+    [System.NonSerialized]
+    public List<string> EnemyTags;
+    
     public void BlowUp()
     {
         Pool.Instance.DeactivateObject(gameObject);

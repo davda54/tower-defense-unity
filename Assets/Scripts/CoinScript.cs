@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinScript : MonoBehaviour
 {
-    public int Value;
+    public const int Value = 10;
     private float randomNumber;
 
 	// Use this for initialization

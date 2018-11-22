@@ -1,4 +1,6 @@
-﻿using Assets.Scripts;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Assets.Scripts;
 using UnityEngine;
 
 public class CannonScript : MonoBehaviour
@@ -9,19 +11,22 @@ public class CannonScript : MonoBehaviour
     public float BulletSpeed;
     public float Damage;
     public float RotationSpeed;
+    public List<GameObject> Enemies;
 
     private float timeToShoot = 0.0f;
+    private List<string> enemyTags;
 
 	void Start ()
-    {
-        var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, float.PositiveInfinity);
+	{
+	    enemyTags = Enemies.Select(e => e.tag).ToList();
+        var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, float.PositiveInfinity, enemyTags);
         var angle = MathHelpers.Angle(enemy.transform.position - transform.position, transform.up);
         transform.eulerAngles = new Vector3(0, 0, angle);
     }
 
     void FixedUpdate ()
     {
-        var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, Range);
+        var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, Range, enemyTags);
 
         if (enemy != null)
         {
@@ -39,6 +44,7 @@ public class CannonScript : MonoBehaviour
                 bulletScript.Direction = transform.transform.up;
                 bulletScript.Damage = Damage;
                 bulletScript.Target = enemy;
+                bulletScript.EnemyTags = enemyTags;
 
                 bullet.SetActive(true);
 
@@ -48,7 +54,7 @@ public class CannonScript : MonoBehaviour
         }
         else
         {
-            var closestEnemy = EnemyManagerScript.Instance.GetClosestEnemyInRange(transform.position, Range*2);
+            var closestEnemy = EnemyManagerScript.Instance.GetClosestEnemyInRange(transform.position, Range*2, enemyTags);
             if (closestEnemy != null) TurnToEnemy(closestEnemy.transform.position + closestEnemy.transform.right * 32);
         }
 

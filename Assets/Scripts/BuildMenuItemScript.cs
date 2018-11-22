@@ -10,7 +10,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
     public GameObject Prototype;
 
     private Text text;
-    private TurretScript turret;
+    private Text price;
     private GameObject parent;
     private Image image;
     private bool pressed = false;
@@ -18,15 +18,20 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
 
     void Update()
     {
-        if(disabled && GameManager.Instance.GetMoney() >= turret.Cost)
+        var enoughMoney = GameManager.Instance.EnoughMoneyForTurret(Prototype.tag);
+        price.text = "$" + GameManager.Instance.MoneyForTurret(Prototype.tag);
+
+        if(disabled && enoughMoney)
         {
             disabled = false;
             text.color = new Color(0, 0, 0, 1);
+            price.color = new Color(0, 0, 0, 1);
         }
-        else if(!disabled && GameManager.Instance.GetMoney() < turret.Cost)
+        else if(!disabled && !enoughMoney)
         {
             disabled = true;
             text.color = new Color(0, 0, 0, 0.25f);
+            price.color = new Color(0, 0, 0, 0.25f);
         }
     }
 
@@ -73,7 +78,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
     {
         parent = GetComponentInParent<BuildLocationScript>().gameObject;
         image = GetComponent<Image>();
-        turret = Prototype.GetComponent<TurretScript>();
         text = transform.Find("Name").gameObject.GetComponent<Text>();
-	}
+        price = transform.Find("Price").gameObject.GetComponent<Text>();
+    }
 }

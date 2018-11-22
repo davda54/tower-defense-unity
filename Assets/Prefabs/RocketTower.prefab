@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114665897613325686}
   m_Layer: 9
   m_Name: RocketTower
-  m_TagString: Untagged
+  m_TagString: rocketTower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8feaeb446d98046b48de2efc06fb6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cost: 500
 --- !u!114 &114778330271716362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,6 +101,9 @@ MonoBehaviour:
   BulletSpeed: 0
   Damage: 50
   RotationSpeed: 5
+  Enemies:
+  - {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
+  - {fileID: 1478546801253832, guid: c10f8ee6335fe554e85979fe4b225ae5, type: 2}
 --- !u!212 &212089695613024384
 SpriteRenderer:
   m_ObjectHideFlags: 1
