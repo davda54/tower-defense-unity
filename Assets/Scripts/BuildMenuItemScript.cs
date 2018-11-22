@@ -12,6 +12,8 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
     private Text text;
     private Text price;
     private GameObject parent;
+    private GameObject rangeSprite;
+    private float range;
     private Image image;
     private bool pressed = false;
     private bool disabled = false;
@@ -49,6 +51,8 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
         if (disabled) return;
 
         image.sprite = HoverSprite;
+        rangeSprite.SetActive(true);
+        rangeSprite.transform.localScale = new Vector3(16 * range, 16 * range, 1);
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -56,9 +60,10 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
         if (disabled) return;
 
         image.sprite = BaseSprite;
+        rangeSprite.SetActive(false);
 
         if (!pressed) return;
-
+        
         gameObject.transform.Translate(0, 3f, 0);
         pressed = false;
     }
@@ -80,5 +85,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
         image = GetComponent<Image>();
         text = transform.Find("Name").gameObject.GetComponent<Text>();
         price = transform.Find("Price").gameObject.GetComponent<Text>();
+        rangeSprite = parent.transform.Find("Range").gameObject;
+        range = Prototype.transform.Find("Cannon").GetComponent<CannonScript>().Range;
     }
 }
