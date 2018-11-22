@@ -52,12 +52,12 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "finish")
+        if(collision.CompareTag("finish"))
         {
             GameManager.Instance.EnemyEscaped(gameObject);
         }
 
-        else if(collision.tag == "bullet" || collision.tag == "rocket")
+        else if((collision.CompareTag("bullet") && !CompareTag("plane"))|| (collision.CompareTag("rocket") && !CompareTag("soldier")))
         {
             var flyingShot = collision.gameObject.GetComponent<FlyingShotScript>();
             var damage = flyingShot.Damage;
