@@ -8,7 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Big_testing_level.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Scenes/Level_03.unity
+    guid: d0a50113baa4e9f4282387a84c66d5aa
   - enabled: 1
     path: Assets/Scenes/Level_01.unity
-    guid: d0a50113baa4e9f4282387a84c66d5aa
+    guid: 9631ade1d45ad4f48aebac2a1c2b56f3
   m_configObjects: {}
