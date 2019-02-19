@@ -13,6 +13,10 @@ TagManager:
   - rocket
   - turretTower
   - rocketTower
+  - rifleSoundEffect
+  - missileSoundEffect
+  - shortExplosionSoundEffect
+  - bigExplosionSoundEffect
   layers:
   - Default
   - TransparentFX

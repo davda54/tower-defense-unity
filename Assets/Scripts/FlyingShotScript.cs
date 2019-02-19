@@ -13,7 +13,7 @@ public abstract class FlyingShotScript : MonoBehaviour
     [System.NonSerialized] public List<string> EnemyTags;
     [System.NonSerialized] public Transform Turret;
 
-    public void BlowUp()
+    public virtual void BlowUp()
     {
         Pool.Instance.DeactivateObject(gameObject);
     }

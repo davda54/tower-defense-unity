@@ -18,6 +18,8 @@ public class RocketScript : FlyingShotScript
 	// Use this for initialization
 	void OnEnable ()
     {
+        Pool.Instance.ActivateObject("missileSoundEffect").SetActive(true);
+
         shadow = transform.Find("Shadow");
         shadow.position = transform.position;
         acceleration = InitialAcceleration;
@@ -54,5 +56,11 @@ public class RocketScript : FlyingShotScript
 
         shadow.position = transform.position + (Vector3)ShadowOffset * (InitialAcceleration - acceleration) / InitialAcceleration;
         shadow.rotation = transform.rotation;
+    }
+
+    public override void BlowUp()
+    {
+        Pool.Instance.ActivateObject("shortExplosionSoundEffect").SetActive(true);
+        base.BlowUp();
     }
 }

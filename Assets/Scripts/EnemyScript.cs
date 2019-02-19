@@ -57,7 +57,7 @@ public class EnemyScript : MonoBehaviour
             GameManager.Instance.EnemyEscaped(gameObject);
         }
 
-        else if((collision.CompareTag("bullet") && !CompareTag("plane"))|| (collision.CompareTag("rocket") && !CompareTag("soldier")))
+        else if((collision.CompareTag("bullet") && !CompareTag("plane")) || (collision.CompareTag("rocket") && !CompareTag("soldier")))
         {
             var flyingShot = collision.gameObject.GetComponent<FlyingShotScript>();
             var damage = flyingShot.Damage;
@@ -68,6 +68,11 @@ public class EnemyScript : MonoBehaviour
             
             if(health <= 0)
             {
+                if (CompareTag("plane") || CompareTag("tank"))
+                {
+                    Pool.Instance.ActivateObject("bigExplosionSoundEffect").SetActive(true);
+                }
+
                 SpawnCoins();
                 GameManager.Instance.EnemyKilled(gameObject);
                 Pool.Instance.DeactivateObject(gameObject);
