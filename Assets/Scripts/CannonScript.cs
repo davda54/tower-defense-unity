@@ -13,6 +13,7 @@ public class CannonScript : MonoBehaviour
     public float RotationSpeed;
     public List<GameObject> Enemies;
 
+    private GameObject bulletPlaceholder;
     private float timeToShoot = 0.0f;
     private List<string> enemyTags;
 
@@ -22,7 +23,9 @@ public class CannonScript : MonoBehaviour
         var enemy = EnemyManagerScript.Instance.GetEnemyInRange(transform.position, float.PositiveInfinity, enemyTags);
         var angle = MathHelpers.Angle(enemy.transform.position - transform.position, transform.up);
         transform.eulerAngles = new Vector3(0, 0, angle);
-    }
+
+	    bulletPlaceholder = transform.Find("Rocket").gameObject;
+	}
 
     void FixedUpdate ()
     {
@@ -45,10 +48,13 @@ public class CannonScript : MonoBehaviour
                 bulletScript.Damage = Damage;
                 bulletScript.Target = enemy;
                 bulletScript.EnemyTags = enemyTags;
+                bulletScript.Turret = transform;
 
                 bullet.SetActive(true);
 
                 timeToShoot = ShootingPeriod;
+
+                if(bulletPlaceholder != null) bulletPlaceholder.SetActive(false);
                 return;
             }
         }
@@ -56,6 +62,11 @@ public class CannonScript : MonoBehaviour
         {
             var closestEnemy = EnemyManagerScript.Instance.GetClosestEnemyInRange(transform.position, Range*2, enemyTags);
             if (closestEnemy != null) TurnToEnemy(closestEnemy.transform.position + closestEnemy.transform.right * 32);
+        }
+
+        if (bulletPlaceholder != null && timeToShoot < ShootingPeriod / 8.0f && !bulletPlaceholder.activeSelf)
+        {
+            bulletPlaceholder.SetActive(true);
         }
 
         timeToShoot -= Time.deltaTime;

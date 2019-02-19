@@ -13,19 +13,30 @@ public class RocketScript : FlyingShotScript
     private float acceleration;
     private Transform shadow;
 
+    private float startTime;
+
 	// Use this for initialization
 	void OnEnable ()
     {
         shadow = transform.Find("Shadow");
         shadow.position = transform.position;
-        velocity = Direction.normalized;
         acceleration = InitialAcceleration;
-	}
+        startTime = 1.0f;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        if(Target == null || !Target.activeSelf)
+        if (startTime >= 0)
+        {
+            startTime -= Time.deltaTime;
+            transform.rotation = Turret.rotation;
+            Direction = Turret.up;
+            velocity = Direction.normalized;
+            return;
+        }
+
+        if (Target == null || !Target.activeSelf)
         {
             Target = EnemyManagerScript.Instance.GetClosestEnemyInRange(transform.position, float.PositiveInfinity, EnemyTags);
             if (Target == null) BlowUp();

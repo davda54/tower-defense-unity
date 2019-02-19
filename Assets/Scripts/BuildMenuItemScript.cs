@@ -48,6 +48,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Update();
         if (disabled) return;
 
         image.sprite = HoverSprite;
@@ -57,10 +58,11 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        rangeSprite.SetActive(false);
+
         if (disabled) return;
 
         image.sprite = BaseSprite;
-        rangeSprite.SetActive(false);
 
         if (!pressed) return;
         
@@ -75,6 +77,7 @@ public class BuildMenuItemScript : MonoBehaviour, IPointerDownHandler, IPointerE
         var instance = Instantiate(Prototype, parent.transform.position, Quaternion.identity);
         GameManager.Instance.TurretBuilt(instance);
 
+        rangeSprite.SetActive(false);
         parent.SetActive(false);
     }
 

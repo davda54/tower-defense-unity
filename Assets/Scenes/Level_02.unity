@@ -5878,7 +5878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLives: 5
-  InitialMoney: 150
+  InitialMoney: 1500
   InitialTurretPrice: 100
   InitialRocketPrice: 600
   TurretPriceAddition: 50
@@ -5951,6 +5951,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Waves:
+  - Amount: 2
+    Enemy: {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
+    SpawnTime: 10
+    RestTime: 30
   - Amount: 10
     Enemy: {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
     SpawnTime: 2
@@ -5967,10 +5971,6 @@ MonoBehaviour:
     Enemy: {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
     SpawnTime: 0.25
     RestTime: 5
-  - Amount: 2
-    Enemy: {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
-    SpawnTime: 10
-    RestTime: 30
   - Amount: 50
     Enemy: {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
     SpawnTime: 0.25
