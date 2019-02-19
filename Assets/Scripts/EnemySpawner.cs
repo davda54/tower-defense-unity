@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     public List<Wave> Waves;
     private int waveIndex = 0;
     private Wave currentWave;
-    private float spawnTime = 0.0f;
+    private float spawnTime = 2.0f;
 
 	// Use this for initialization
 	void OnEnable ()
