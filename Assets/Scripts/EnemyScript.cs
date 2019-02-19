@@ -71,6 +71,9 @@ public class EnemyScript : MonoBehaviour
                 if (CompareTag("plane") || CompareTag("tank"))
                 {
                     Pool.Instance.ActivateObject("bigExplosionSoundEffect").SetActive(true);
+                    var explosion = Pool.Instance.ActivateObject("explosionParticle");
+                    explosion.transform.position = transform.position;
+                    explosion.SetActive(true);
                 }
 
                 SpawnCoins();

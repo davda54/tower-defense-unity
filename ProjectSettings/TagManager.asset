@@ -17,6 +17,7 @@ TagManager:
   - missileSoundEffect
   - shortExplosionSoundEffect
   - bigExplosionSoundEffect
+  - explosionParticle
   layers:
   - Default
   - TransparentFX
