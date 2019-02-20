@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +21,9 @@ public class GameManager : MonoBehaviour
     public int MaxLives;
     public int InitialMoney;
 
+    public int Level;
+    public GameObject VictoryText;
+
     public int InitialTurretPrice;
     public int InitialRocketPrice;
     public int TurretPriceAddition;
@@ -31,6 +36,8 @@ public class GameManager : MonoBehaviour
     private int money;
     private HealthDrawerScript healthDrawer;
     private MoneyDrawer moneyDrawer;
+
+    private int remainingEnemies;
 
     // Use this for initialization
     void Start ()
@@ -45,6 +52,8 @@ public class GameManager : MonoBehaviour
         moneyDrawer = GetComponent<MoneyDrawer>();
 
         moneyDrawer.Draw(InitialMoney);
+
+        remainingEnemies = GetComponent<EnemySpawner>().Waves.Sum(w => w.Amount);
     }
 
     public void EnemyEscaped(GameObject enemy)
@@ -52,10 +61,15 @@ public class GameManager : MonoBehaviour
         lives--;
         CameraShaker.Instance.Shake();
         healthDrawer.Draw(lives);
+
+        remainingEnemies--;
+        if(remainingEnemies == 0) Victory();
     }
 
     public void EnemyKilled(GameObject enemy)
     {
+        remainingEnemies--;
+        if(remainingEnemies == 0) Victory();
     }
 
     public int GetMoney()
@@ -102,5 +116,23 @@ public class GameManager : MonoBehaviour
     public int MoneyForTurret(string tag)
     {
         return tag == "turretTower" ? turretPrice : rocketPrice;
+    }
+
+    public void Victory()
+    {
+        VictoryText.SetActive(true);
+        Invoke("NextLevel", 2.0f);
+    }
+
+    public void NextLevel()
+    {
+        if (Level <= 2)
+        {
+            SceneManager.LoadScene("Level_0" + (Level + 1));
+        }
+        else
+        {
+            SceneManager.LoadScene("Menu_screen");
+        }
     }
 }

@@ -571,7 +571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 120}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &273746381
@@ -1012,9 +1012,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96bc2a58cec835f4bb18676781f0f845, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  Amount: 0
-  Decay: 0
+  Speed: 5
+  Amount: 5
+  Decay: 0.9
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -5956,6 +5956,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLives: 5
   InitialMoney: 150
+  Level: 0
+  VictoryText: {fileID: 0}
   InitialTurretPrice: 100
   InitialRocketPrice: 600
   TurretPriceAddition: 50

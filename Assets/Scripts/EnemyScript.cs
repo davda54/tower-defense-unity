@@ -52,9 +52,12 @@ public class EnemyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!gameObject.activeSelf) return;
+
         if(collision.CompareTag("finish"))
         {
             GameManager.Instance.EnemyEscaped(gameObject);
+            Pool.Instance.DeactivateObject(gameObject);
         }
 
         else if((collision.CompareTag("bullet") && !CompareTag("plane")) || (collision.CompareTag("rocket") && !CompareTag("soldier")))
