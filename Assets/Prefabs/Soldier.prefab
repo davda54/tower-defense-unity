@@ -325,7 +325,7 @@ MonoBehaviour:
   Money: 15
   Coin: {fileID: 1217316932939368, guid: 570d8db676ef6304ebdb3a76c5e8d74c, type: 2}
   SpawnedCoinMean: 0
-  SpawnedCoinStd: 0
+  SpawnedCoinStd: 0.4
 --- !u!114 &114551000038308868
 MonoBehaviour:
   m_ObjectHideFlags: 1

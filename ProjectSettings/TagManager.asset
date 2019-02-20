@@ -18,6 +18,7 @@ TagManager:
   - shortExplosionSoundEffect
   - bigExplosionSoundEffect
   - explosionParticle
+  - coinSoundEffect
   layers:
   - Default
   - TransparentFX

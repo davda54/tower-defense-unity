@@ -9,31 +9,31 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1296521172784140}
+  m_RootGameObject: {fileID: 1210162242655770}
   m_IsPrefabAsset: 1
---- !u!1 &1296521172784140
+--- !u!1 &1210162242655770
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4578154855997042}
-  - component: {fileID: 82490600613703222}
-  - component: {fileID: 114679613166504174}
+  - component: {fileID: 4139273848255676}
+  - component: {fileID: 82712467970895852}
+  - component: {fileID: 114427896562019590}
   m_Layer: 0
-  m_Name: MissileSoundEffect
-  m_TagString: missileSoundEffect
+  m_Name: CoinSoundEffect
+  m_TagString: coinSoundEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4578154855997042
+--- !u!4 &4139273848255676
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1296521172784140}
+  m_GameObject: {fileID: 1210162242655770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -41,18 +41,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &82490600613703222
+--- !u!82 &82712467970895852
 AudioSource:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1296521172784140}
+  m_GameObject: {fileID: 1210162242655770}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6625fc1df6558404b947cae97513f39a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 537d485a7a2d56a458d9af901dd5c132, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.04
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -136,12 +136,12 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114679613166504174
+--- !u!114 &114427896562019590
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1296521172784140}
+  m_GameObject: {fileID: 1210162242655770}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c8815559e5a799848a754b990afcb216, type: 3}

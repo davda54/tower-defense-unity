@@ -6,7 +6,7 @@ public class AutoDisableScript : MonoBehaviour
     private float remainingTime;
 
 	// Use this for initialization
-	void Start ()
+	void OnEnable ()
 	{
 	    remainingTime = TimeOut;
 	}

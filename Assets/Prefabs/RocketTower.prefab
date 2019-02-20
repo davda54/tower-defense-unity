@@ -127,7 +127,7 @@ MonoBehaviour:
   BulletPrototype: {fileID: 1806384793953532, guid: 7de8fce8894362844a7152328b031743,
     type: 2}
   ShootingPeriod: 2
-  Range: 512
+  Range: 400
   BulletSpeed: 0
   Damage: 50
   RotationSpeed: 5

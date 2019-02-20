@@ -18,11 +18,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int MaxLives;
+    public const int MaxLives = 5;
     public int InitialMoney;
 
     public int Level;
     public GameObject VictoryText;
+    public GameObject GameOverText;
 
     public int InitialTurretPrice;
     public int InitialRocketPrice;
@@ -32,7 +33,7 @@ public class GameManager : MonoBehaviour
     private int turretPrice;
     private int rocketPrice;
 
-    private static int lives;
+    public static int Lives;
     private int money;
     private HealthDrawerScript healthDrawer;
     private MoneyDrawer moneyDrawer;
@@ -42,7 +43,6 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        if(Level == 1) lives = MaxLives;
         money = InitialMoney;
 
         turretPrice = InitialTurretPrice;
@@ -58,9 +58,14 @@ public class GameManager : MonoBehaviour
 
     public void EnemyEscaped(GameObject enemy)
     {
-        lives--;
+        Lives--;
         CameraShaker.Instance.Shake();
-        healthDrawer.Draw(lives);
+        healthDrawer.Draw(Lives);
+
+        if (Lives <= 0)
+        {
+            GameOver();
+        }
 
         remainingEnemies--;
         if(remainingEnemies == 0) Victory();
@@ -121,7 +126,13 @@ public class GameManager : MonoBehaviour
     public void Victory()
     {
         VictoryText.SetActive(true);
-        Invoke("NextLevel", 2.0f);
+        Invoke("NextLevel", 5.0f);
+    }
+    
+    public void GameOver()
+    {
+        GameOverText.SetActive(true);
+        Invoke("BackToMainMenu", 5.0f);
     }
 
     public void NextLevel()
@@ -134,5 +145,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Menu_screen");
         }
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("Menu_screen");
     }
 }

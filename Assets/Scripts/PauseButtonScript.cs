@@ -24,6 +24,7 @@ public class PauseButtonScript : MonoBehaviour
 
     public void BackToMainMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene("Menu_screen");
     }
 }

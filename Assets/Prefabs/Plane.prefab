@@ -250,8 +250,8 @@ MonoBehaviour:
   MaxHealth: 200
   Money: 100
   Coin: {fileID: 1217316932939368, guid: 570d8db676ef6304ebdb3a76c5e8d74c, type: 2}
-  SpawnedCoinMean: 0
-  SpawnedCoinStd: 0
+  SpawnedCoinMean: 1
+  SpawnedCoinStd: 1
 --- !u!114 &114261421084693678
 MonoBehaviour:
   m_ObjectHideFlags: 1
