@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private int turretPrice;
     private int rocketPrice;
 
-    private int lives;
+    private static int lives;
     private int money;
     private HealthDrawerScript healthDrawer;
     private MoneyDrawer moneyDrawer;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        lives = MaxLives;
+        if(Level == 1) lives = MaxLives;
         money = InitialMoney;
 
         turretPrice = InitialTurretPrice;
