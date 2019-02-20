@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0733ee200212bd743bf9e3541dcf4a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 200
+  MaxHealth: 100
   Money: 100
   Coin: {fileID: 1217316932939368, guid: 570d8db676ef6304ebdb3a76c5e8d74c, type: 2}
   SpawnedCoinMean: 1

@@ -7118,7 +7118,7 @@ MonoBehaviour:
     RestTime: 5
   - Amount: 8
     Enemy: {fileID: 1478546801253832, guid: c10f8ee6335fe554e85979fe4b225ae5, type: 2}
-    SpawnTime: 2
+    SpawnTime: 3
     RestTime: 5
   - Amount: 10
     Enemy: {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
@@ -7132,21 +7132,21 @@ MonoBehaviour:
     Enemy: {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
     SpawnTime: 1
     RestTime: 0
-  - Amount: 20
+  - Amount: 50
     Enemy: {fileID: 1141339285231944, guid: 2b4be0333c134ad478dfc8f4bd8c7f23, type: 2}
     SpawnTime: 0.15
     RestTime: 0
   - Amount: 10
     Enemy: {fileID: 1478546801253832, guid: c10f8ee6335fe554e85979fe4b225ae5, type: 2}
-    SpawnTime: 1
-    RestTime: 0
-  - Amount: 20
+    SpawnTime: 2
+    RestTime: 5
+  - Amount: 15
     Enemy: {fileID: 1233710361444010, guid: a9f617fb7fe1e9742b1b293a2adbeed6, type: 2}
     SpawnTime: 1
     RestTime: 0
-  - Amount: 20
+  - Amount: 10
     Enemy: {fileID: 1478546801253832, guid: c10f8ee6335fe554e85979fe4b225ae5, type: 2}
-    SpawnTime: 0.8
+    SpawnTime: 1
     RestTime: 0
 --- !u!114 &1087949922
 MonoBehaviour:

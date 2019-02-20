@@ -57,7 +57,6 @@ public class EnemyScript : MonoBehaviour
         if(collision.CompareTag("finish"))
         {
             GameManager.Instance.EnemyEscaped(gameObject);
-            Pool.Instance.DeactivateObject(gameObject);
         }
 
         else if((collision.CompareTag("bullet") && !CompareTag("plane")) || (collision.CompareTag("rocket") && !CompareTag("soldier")))
